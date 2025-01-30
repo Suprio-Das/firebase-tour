@@ -84,6 +84,11 @@ const Home = () => {
                     </div>
                 </div>
             </section>
+
+            {/* Technologies */}
+            <section className="mt-24">
+                <h1 className="lg:text-3xl text-xl font-semibold text-center"> 💻 Technologies Used</h1>
+            </section>
         </div>
     );
 };
