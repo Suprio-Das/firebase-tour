@@ -1,5 +1,6 @@
 import firebaseImage from "../images/firebase.png";
 import firebaseLogo from "../images/firebaseLogo.png";
+import firebaseEmail from "../images/firebaseEmail.png";
 const Home = () => {
     return (
         <div className="w-[80%] mx-auto lg:my-11">
@@ -17,16 +18,28 @@ const Home = () => {
             {/* About Project */}
             <section className="mt-24">
                 <h1 className="lg:text-3xl text-xl font-semibold text-center"> 🚀 What I'll Do In This Project</h1>
-                <div className="grid lg:grid-cols-3 grid-cols-1 my-5">
-                    <div className="bg-neutral-100 p-3 hover:border-2 border-gray-200 transition ease-in-out">
-                        <div>
-                            <img src={firebaseLogo} alt="firebase_logo" className="w-20 mx-auto" />
+                <div className="grid lg:grid-cols-3 grid-cols-1 my-5 gap-5">
+                    {/* Firebase Authentication */}
+                    <div className="bg-neutral-100 hover:shadow-md transition ease-in-out h-40 flex flex-col">
+                        <div className="flex-1 flex items-center justify-center p-2">
+                            <img src={firebaseLogo} alt="firebase_logo" className="w-20" />
                         </div>
-                        <div>
-                            <h1 className="text-center text-xl font-semibold my-2">Firebase Authentication</h1>
+                        <div className="bg-black mt-auto p-2">
+                            <h1 className="text-center text-md font-semibold text-white">Firebase Authentication</h1>
+                        </div>
+                    </div>
+
+                    {/* Email & Password Authentication */}
+                    <div className="bg-neutral-100 hover:shadow-md transition ease-in-out h-40 flex flex-col">
+                        <div className="flex-1 flex items-center justify-center p-2">
+                            <img src={firebaseEmail} alt="firebase_email" className="w-20" />
+                        </div>
+                        <div className="bg-black mt-auto p-2">
+                            <h1 className="text-center text-md font-semibold text-white">Email & Password Authentication</h1>
                         </div>
                     </div>
                 </div>
+
             </section>
         </div>
     );
