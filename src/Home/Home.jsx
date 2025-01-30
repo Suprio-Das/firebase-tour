@@ -5,6 +5,7 @@ import firebaseGoogle from "../images/firebaseGoogle.png";
 import firebaseGit from "../images/firebaseGit.png";
 import firebaseEmailVerification from "../images/firebaseEmailVerification.png";
 import firebasePasswordReset from "../images/firebasePasswordReset.png";
+import html from "../images/html.png";
 const Home = () => {
     return (
         <div className="w-[80%] mx-auto lg:my-11">
@@ -88,6 +89,9 @@ const Home = () => {
             {/* Technologies */}
             <section className="mt-24">
                 <h1 className="lg:text-3xl text-xl font-semibold text-center"> 💻 Technologies Used</h1>
+                <div>
+                    <img src={html} alt="" className="w-16" />
+                </div>
             </section>
         </div>
     );
