@@ -4,6 +4,7 @@ import firebaseEmail from "../images/firebaseEmail.png";
 import firebaseGoogle from "../images/firebaseGoogle.png";
 import firebaseGit from "../images/firebaseGit.png";
 import firebaseEmailVerification from "../images/firebaseEmailVerification.png";
+import firebasePasswordReset from "../images/firebasePasswordReset.png";
 const Home = () => {
     return (
         <div className="w-[80%] mx-auto lg:my-11">
@@ -69,6 +70,16 @@ const Home = () => {
                         </div>
                         <div className="bg-black mt-auto p-2">
                             <h1 className="text-center text-md font-semibold text-white">Email Verification</h1>
+                        </div>
+                    </div>
+
+                    {/* Password Reset */}
+                    <div className="bg-neutral-100 hover:shadow-md transition ease-in-out h-40 flex flex-col">
+                        <div className="flex-1 flex items-center justify-center p-2">
+                            <img src={firebasePasswordReset} alt="firebase_email" className="w-20" />
+                        </div>
+                        <div className="bg-black mt-auto p-2">
+                            <h1 className="text-center text-md font-semibold text-white">Password Reset</h1>
                         </div>
                     </div>
                 </div>
