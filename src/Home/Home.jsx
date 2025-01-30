@@ -22,7 +22,7 @@ const Home = () => {
             {/* About Project */}
             <section className="mt-24">
                 <h1 className="lg:text-3xl text-xl font-semibold text-center"> 🚀 What I'll Do In This Project</h1>
-                <div className="grid lg:grid-cols-3 grid-cols-1 my-5 gap-5">
+                <div className="grid lg:grid-cols-3 grid-cols-1 my-9 gap-11">
                     {/* Firebase Authentication */}
                     <div className="bg-neutral-100 hover:shadow-md transition ease-in-out h-40 flex flex-col">
                         <div className="flex-1 flex items-center justify-center p-2">
