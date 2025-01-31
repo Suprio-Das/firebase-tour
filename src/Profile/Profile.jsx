@@ -17,6 +17,7 @@ const Profile = () => {
 
         return () => unsubscribe();
     }, []);
+    console.log(user)
     return (
         <div className="w-[80%] mx-auto my-20">
             {
@@ -28,6 +29,7 @@ const Profile = () => {
                         <div>
                             <h2 className="text-center text-xl font-semibold my-2">{user.displayName}</h2>
                             <p className="text-center text-md">{user.email}</p>
+                            <code className="text-center block my-2">Last Sign-in : <br />{user.metadata.lastSignInTime}</code>
                         </div>
                     </div>
             }
