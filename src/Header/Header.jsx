@@ -62,7 +62,10 @@ const Header = () => {
                                 </ul>
                             </div>
                             :
-                            <button>Login</button>
+                            <div>
+                                <NavLink to="/login" className="btn btn-neutral ms-2">Login</NavLink>
+                                <NavLink to="/signup" className="btn btn-neutral ms-2">Sign-up</NavLink>
+                            </div>
                     }
                 </div>
             </div>
