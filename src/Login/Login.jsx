@@ -20,14 +20,8 @@ const Login = () => {
         signInWithEmailAndPassword(auth, email, password)
             .then((result) => {
                 console.log(result)
-                if (!result.user.emailVerified) {
-                    setLoginError('Please Verify Your Email First.')
-                    return;
-                }
-                else {
-                    navigate("/")
-                    window.location.reload();
-                }
+                navigate("/")
+                window.location.reload();
             })
             .catch(error => {
                 setLoginError(error.message)
