@@ -25,6 +25,9 @@ const SignUp = () => {
             setErrorMessage("Please give a strong password. E.g. helloBuddy123#!#");
             return;
         }
+
+
+
         console.log(errorMessage)
     }
     return (
