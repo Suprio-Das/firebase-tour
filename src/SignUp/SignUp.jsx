@@ -17,6 +17,12 @@ const SignUp = () => {
                         </label>
                         <input type="email" placeholder="abc@gmail.com" name="email" className="input w-full" />
                     </div>
+                    <div className="mt-5">
+                        <label htmlFor="profile">
+                            Profile
+                        </label>
+                        <input type="text" placeholder="Upload Your Image Link" name="profile" className="input w-full" />
+                    </div>
                 </form>
             </div>
         </div>
