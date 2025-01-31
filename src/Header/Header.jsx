@@ -5,11 +5,13 @@ import { auth } from "../Firebase/Firebase.config"
 
 const Header = () => {
     const [user, setUser] = useState(null);
+    const [userVerified, setUserVerified] = useState(false);
     const navigate = useNavigate();
     useEffect(() => {
         onAuthStateChanged(auth, (currentUser) => {
             setUser(currentUser);
             console.log(user)
+            setUserVerified(currentUser.emailVerified)
         });
     }, []);
 
@@ -51,13 +53,13 @@ const Header = () => {
                 </div>
                 <div className="navbar-end">
                     {
-                        user ?
+                        user && userVerified ?
                             <div className="dropdown dropdown-end">
                                 <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">
                                     <div className="w-10 rounded-full">
                                         <img
                                             alt="Profile Image"
-                                            src={user.photoURL ? (user.photoURL) : "https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp"} />
+                                            src={user.photoURL} />
                                     </div>
                                 </div>
                                 <ul
