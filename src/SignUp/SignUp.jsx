@@ -1,11 +1,12 @@
-import { createUserWithEmailAndPassword, sendEmailVerification, updateProfile } from "firebase/auth";
+import { createUserWithEmailAndPassword, GoogleAuthProvider, sendEmailVerification, signInWithPopup, updateProfile } from "firebase/auth";
 import { useState } from "react";
 import { IoPersonCircleSharp } from "react-icons/io5";
 import { auth } from "../Firebase/Firebase.config";
-import { Link } from "react-router";
+import { Link, useNavigate } from "react-router";
 const SignUp = () => {
     const [errorMessage, setErrorMessage] = useState('');
     const [success, setsuccess] = useState(false);
+    const navigate = useNavigate();
     const handleRegister = (e) => {
         e.preventDefault();
         const name = e.target.name.value;
@@ -54,8 +55,23 @@ const SignUp = () => {
 
         console.log(errorMessage)
     }
+
+    // Handle Google Register
+    const handleGoogleLogin = () => {
+        const googleProvider = new GoogleAuthProvider();
+        signInWithPopup(auth, googleProvider)
+            .then(() => {
+                navigate("/")
+                window.location.reload();
+            })
+            .catch(error => {
+                setErrorMessage(error.message)
+                console.log(error.message)
+            })
+    }
+
     return (
-        <div className="flex flex-col items-center min-h-screen lg:mt-[-30px] justify-center mx-auto">
+        <div className="flex flex-col items-center min-h-screen  justify-center mx-auto">
             <div className="max-w-xl border-2 border-dark p-5 rounded-lg">
                 <h1 className="flex items-center text-xl font-semibold text-center"><IoPersonCircleSharp className="text-3xl mr-2" /> Register Your Firebase Account!</h1>
                 <form onSubmit={handleRegister}>
@@ -87,6 +103,8 @@ const SignUp = () => {
                         Sign-up
                     </button>
                     <p className="text-sm text-center mt-2">Already Have an Account? <Link to="/login" className="text-blue-500 font-semibold">Login</Link></p>
+                    <p className="text-center">Or</p>
+                    <p className="text-sm btn btn-base w-full" onClick={handleGoogleLogin}>Register with Google</p>
                 </form>
                 {
                     success &&
