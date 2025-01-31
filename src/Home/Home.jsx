@@ -92,8 +92,8 @@ const Home = () => {
 
             {/* Technologies */}
             <section className="mt-24">
-                <h1 className="lg:text-3xl text-xl font-semibold text-center"> 💻 Technologies Used</h1>
-                <div className="flex items-center justify-between">
+                <h1 className="lg:text-3xl text-xl font-semibold text-center mb-5"> 💻 Technologies Used</h1>
+                <div className="lg:flex items-center justify-between">
                     <div>
                         <img src={html} alt="" className="w-16" />
                     </div>
