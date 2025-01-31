@@ -1,4 +1,4 @@
-import { createUserWithEmailAndPassword, sendEmailVerification } from "firebase/auth";
+import { createUserWithEmailAndPassword, sendEmailVerification, updateProfile } from "firebase/auth";
 import { useState } from "react";
 import { IoPersonCircleSharp } from "react-icons/io5";
 import { auth } from "../Firebase/Firebase.config";
@@ -40,6 +40,12 @@ const SignUp = () => {
                     .then(() => {
                         setsuccess(true);
                     })
+
+                // Update User Profile with more information
+                updateProfile(auth.currentUser, {
+                    displayName: name,
+                    photoURL: profile
+                })
             })
             .catch(error => {
                 setErrorMessage(error.message);

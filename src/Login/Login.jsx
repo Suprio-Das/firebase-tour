@@ -46,6 +46,12 @@ const Login = () => {
                         Login
                     </button>
                 </form>
+                {
+                    loginError &&
+                    <div className="mt-3">
+                        <code className="block text-center text-red-600">{loginError}</code>
+                    </div>
+                }
             </div>
         </div>
     );
