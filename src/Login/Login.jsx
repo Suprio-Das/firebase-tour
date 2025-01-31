@@ -78,6 +78,8 @@ const Login = () => {
                         Login
                     </button>
                     <p className="text-sm text-center mt-2">Don't Have an Account? <Link to="/signup" className="text-blue-500 font-semibold">Signup</Link></p>
+                    <p className="text-center">Or</p>
+                    <p className="text-sm btn btn-base w-full">Login with Google</p>
                 </form>
                 {
                     loginError &&
