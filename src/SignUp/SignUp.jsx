@@ -80,6 +80,12 @@ const SignUp = () => {
                         Sign-up
                     </button>
                 </form>
+                {
+                    success &&
+                    <div className="mt-3">
+                        <code className="text-center text-green-700 text-sm font-semibold">Account Created Successfully! Please Verfiy Your Email Before Login.</code>
+                    </div>
+                }
             </div>
         </div>
     );
