@@ -3,9 +3,13 @@ import { IoPersonCircleSharp } from "react-icons/io5";
 import { auth } from "../Firebase/Firebase.config";
 import { useState } from "react";
 import { Link, useNavigate } from "react-router";
+import { BsFillEmojiHeartEyesFill } from "react-icons/bs";
+import { PiSmileyXEyesFill } from "react-icons/pi";
+
 
 const Login = () => {
     const [loginError, setLoginError] = useState(false);
+    const [view, setView] = useState(false);
     const navigate = useNavigate();
     const handleLogin = (e) => {
         e.preventDefault();
@@ -40,11 +44,16 @@ const Login = () => {
                         </label>
                         <input type="email" placeholder="abc@gmail.com" name="email" className="input w-full" required />
                     </div>
-                    <div className="mt-5">
+                    <div className="mt-5 relative">
                         <label htmlFor="profile">
                             Password
                         </label>
-                        <input type="password" placeholder="Type your password" name="password" className="input w-full" required />
+                        <input type={view ? "text" : "password"} placeholder="Type your password" name="password" className="input w-full" required />
+                        <p className="absolute top-9 right-2 cursor-pointer" onClick={() => setView(!view)}>
+                            {
+                                view ? <BsFillEmojiHeartEyesFill /> : <PiSmileyXEyesFill />
+                            }
+                        </p>
                     </div>
                     <button type="submit" className="btn btn-dark w-full mt-5 btn-neutral">
                         Login
