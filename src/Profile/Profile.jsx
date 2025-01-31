@@ -22,7 +22,7 @@ const Profile = () => {
         <div className="w-[80%] mx-auto my-20">
             {
                 loading ? <p className="max-w-xl loading loading-spin min-h-screen justify-center items-center text-center"></p> :
-                    <div className="w-1/3 mx-auto bg-gray-100 p-5">
+                    <div className="lg:w-1/3 w-full mx-auto bg-gray-100 p-5">
                         <div className="flex justify-center">
                             <img src={user.photoURL} alt="" className="w-30 h-30 rounded-full border-4" />
                         </div>
