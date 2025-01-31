@@ -1,18 +1,17 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { NavLink } from "react-router";
 import { onAuthStateChanged } from "firebase/auth";
 import { auth } from "../Firebase/Firebase.config"
 
 const Header = () => {
     const [user, setUser] = useState(null);
-    onAuthStateChanged(auth, (user) => {
-        if (user) {
-            setUser(user);
-        }
-        else {
-            console.log("User is not logged in.")
-        }
-    })
+    useEffect(() => {
+        onAuthStateChanged(auth, (currentUser) => {
+            setUser(currentUser);
+            console.log(user)
+        });
+    }, []);
+
     return (
         <div>
             <div className="navbar bg-base-100 shadow-sm">
@@ -25,8 +24,8 @@ const Header = () => {
                             tabIndex={0}
                             className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow">
                             <li><NavLink to="/">Home</NavLink></li>
-                            <li><NavLink to="/login">Login</NavLink></li>
-                            <li><NavLink to="/signup">Sign-up</NavLink></li>
+                            {/* <li><NavLink to="/login">Login</NavLink></li>
+                            <li><NavLink to="/signup">Sign-up</NavLink></li> */}
                         </ul>
                     </div>
                     <a className="btn btn-ghost text-xl">Firebase-Tour</a>
@@ -34,8 +33,8 @@ const Header = () => {
                 <div className="navbar-center hidden lg:flex">
                     <ul className="menu menu-horizontal px-1">
                         <li><NavLink to="/">Home</NavLink></li>
-                        <li><NavLink to="/login">Login</NavLink></li>
-                        <li><NavLink to="/signup">Sign-up</NavLink></li>
+                        {/* <li><NavLink to="/login">Login</NavLink></li>
+                        <li><NavLink to="/signup">Sign-up</NavLink></li> */}
                     </ul>
                 </div>
                 <div className="navbar-end">
@@ -45,8 +44,8 @@ const Header = () => {
                                 <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">
                                     <div className="w-10 rounded-full">
                                         <img
-                                            alt="Tailwind CSS Navbar component"
-                                            src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp" />
+                                            alt="Profile Image"
+                                            src={user.photoURL ? (user.photoURL) : "https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp"} />
                                     </div>
                                 </div>
                                 <ul
