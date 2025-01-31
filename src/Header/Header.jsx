@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { NavLink, useNavigate } from "react-router";
+import { Link, NavLink, useNavigate } from "react-router";
 import { onAuthStateChanged, signOut } from "firebase/auth";
 import { auth } from "../Firebase/Firebase.config";
 
@@ -46,7 +46,13 @@ const Header = () => {
                     </div>
                     <a className="btn btn-ghost text-xl">Firebase-Tour</a>
                 </div>
-
+                <div className="navbar-center hidden lg:flex">
+                    <ul className="menu menu-horizontal px-1">
+                        <li><Link to="/">Home</Link></li>
+                        <li><Link to="/about">About</Link></li>
+                        <li><Link to="/contact">Contact</Link></li>
+                    </ul>
+                </div>
                 <div className="navbar-end">
                     {loading ? (
                         <span className="loading loading-dots"></span>
