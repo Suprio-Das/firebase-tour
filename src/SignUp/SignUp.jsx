@@ -1,5 +1,7 @@
+import { createUserWithEmailAndPassword } from "firebase/auth";
 import { useState } from "react";
 import { IoPersonCircleSharp } from "react-icons/io5";
+import { auth } from "../Firebase/Firebase.config";
 const SignUp = () => {
     const [errorMessage, setErrorMessage] = useState('');
     const handleRegister = (e) => {
@@ -26,7 +28,14 @@ const SignUp = () => {
             return;
         }
 
-
+        createUserWithEmailAndPassword(auth, email, password)
+            .then(result => {
+                const user = result.user;
+                console.log(user)
+            })
+            .catch(error => {
+                console.log(error.message)
+            })
 
         console.log(errorMessage)
     }
