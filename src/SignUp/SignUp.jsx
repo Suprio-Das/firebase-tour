@@ -42,7 +42,7 @@ const SignUp = () => {
                     })
             })
             .catch(error => {
-                console.log(error.message)
+                setErrorMessage(error.message);
             })
 
         console.log(errorMessage)
@@ -85,6 +85,12 @@ const SignUp = () => {
                     <div className="mt-3">
                         <code className="block text-center text-green-700 text-sm font-semibold">Account Created Successfully!</code>
                         <code className="block text-center text-red-600"> Please Verfiy Your Email Before Login.</code>
+                    </div>
+                }
+                {
+                    errorMessage &&
+                    <div className="mt-3">
+                        <code className="block text-center text-red-600">{errorMessage}</code>
                     </div>
                 }
             </div>
