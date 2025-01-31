@@ -1,9 +1,10 @@
-import { createUserWithEmailAndPassword } from "firebase/auth";
+import { createUserWithEmailAndPassword, sendEmailVerification } from "firebase/auth";
 import { useState } from "react";
 import { IoPersonCircleSharp } from "react-icons/io5";
 import { auth } from "../Firebase/Firebase.config";
 const SignUp = () => {
     const [errorMessage, setErrorMessage] = useState('');
+    const [success, setsuccess] = useState(false);
     const handleRegister = (e) => {
         e.preventDefault();
         const name = e.target.name.value;
@@ -14,6 +15,7 @@ const SignUp = () => {
 
         // reseting state
         setErrorMessage('');
+        setsuccess(false)
 
         // validating password according to the length
         if (password.length < 6) {
@@ -32,6 +34,12 @@ const SignUp = () => {
             .then(result => {
                 const user = result.user;
                 console.log(user)
+
+                // Sending verification email
+                sendEmailVerification(auth.currentUser)
+                    .then(() => {
+                        setsuccess(true);
+                    })
             })
             .catch(error => {
                 console.log(error.message)
