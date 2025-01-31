@@ -1,4 +1,4 @@
-import { sendPasswordResetEmail, signInWithEmailAndPassword } from "firebase/auth";
+import { GoogleAuthProvider, sendPasswordResetEmail, signInWithEmailAndPassword, signInWithPopup } from "firebase/auth";
 import { IoPersonCircleSharp } from "react-icons/io5";
 import { auth } from "../Firebase/Firebase.config";
 import { useRef, useState } from "react";
@@ -33,6 +33,20 @@ const Login = () => {
                 setLoginError(error.message)
             })
 
+    }
+
+    // Handle Google Login
+    const handleGoogleLogin = () => {
+        const googleProvider = new GoogleAuthProvider();
+        signInWithPopup(auth, googleProvider)
+            .then(() => {
+                navigate("/")
+                window.location.reload();
+            })
+            .catch(error => {
+                setLoginError(error.message)
+                console.log(error.message)
+            })
     }
 
     // Handle Reset Password
@@ -79,7 +93,7 @@ const Login = () => {
                     </button>
                     <p className="text-sm text-center mt-2">Don't Have an Account? <Link to="/signup" className="text-blue-500 font-semibold">Signup</Link></p>
                     <p className="text-center">Or</p>
-                    <p className="text-sm btn btn-base w-full">Login with Google</p>
+                    <p className="text-sm btn btn-base w-full" onClick={handleGoogleLogin}>Login with Google</p>
                 </form>
                 {
                     loginError &&
