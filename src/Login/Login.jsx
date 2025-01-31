@@ -73,7 +73,7 @@ const Login = () => {
                             }
                         </p>
                     </div>
-                    <p className="text-xs underline cursor-pointer" onClick={handleResetPassword}>Forget Password?</p>
+                    <p className="text-xs underline cursor-pointer text-right" onClick={handleResetPassword}>Forget Password?</p>
                     <button type="submit" className="btn btn-dark w-full mt-5 btn-neutral">
                         Login
                     </button>
