@@ -2,7 +2,7 @@ import { signInWithEmailAndPassword } from "firebase/auth";
 import { IoPersonCircleSharp } from "react-icons/io5";
 import { auth } from "../Firebase/Firebase.config";
 import { useState } from "react";
-import { redirect, useNavigate } from "react-router";
+import { Link, redirect, useNavigate } from "react-router";
 
 const Login = () => {
     const [loginError, setLoginError] = useState(false);
@@ -45,6 +45,7 @@ const Login = () => {
                     <button type="submit" className="btn btn-dark w-full mt-5 btn-neutral">
                         Login
                     </button>
+                    <p className="text-sm text-center mt-2">Don't Have an Account? <Link to="/signup" className="text-blue-500 font-semibold">Signup</Link></p>
                 </form>
                 {
                     loginError &&

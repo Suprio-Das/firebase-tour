@@ -2,6 +2,7 @@ import { createUserWithEmailAndPassword, sendEmailVerification, updateProfile } 
 import { useState } from "react";
 import { IoPersonCircleSharp } from "react-icons/io5";
 import { auth } from "../Firebase/Firebase.config";
+import { Link } from "react-router";
 const SignUp = () => {
     const [errorMessage, setErrorMessage] = useState('');
     const [success, setsuccess] = useState(false);
@@ -85,6 +86,7 @@ const SignUp = () => {
                     <button type="submit" className="btn btn-dark w-full mt-5 btn-neutral">
                         Sign-up
                     </button>
+                    <p className="text-sm text-center mt-2">Already Have an Account? <Link to="/login" className="text-blue-500 font-semibold">Login</Link></p>
                 </form>
                 {
                     success &&
