@@ -1,7 +1,7 @@
-import { signInWithEmailAndPassword } from "firebase/auth";
+import { sendPasswordResetEmail, signInWithEmailAndPassword } from "firebase/auth";
 import { IoPersonCircleSharp } from "react-icons/io5";
 import { auth } from "../Firebase/Firebase.config";
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { Link, useNavigate } from "react-router";
 import { BsFillEmojiHeartEyesFill } from "react-icons/bs";
 import { PiSmileyXEyesFill } from "react-icons/pi";
@@ -11,6 +11,7 @@ const Login = () => {
     const [loginError, setLoginError] = useState(false);
     const [view, setView] = useState(false);
     const navigate = useNavigate();
+    const emailRef = useRef();
     const handleLogin = (e) => {
         e.preventDefault();
         const email = e.target.email.value;
@@ -33,6 +34,23 @@ const Login = () => {
             })
 
     }
+
+    // Handle Reset Password
+    const handleResetPassword = () => {
+        const email = emailRef.current.value;
+        if (!email) {
+            alert('Please provide a valid email.')
+        }
+        else {
+            sendPasswordResetEmail(auth, email)
+                .then(() => {
+                    alert('A Password reset email send to your inbox.')
+                })
+                .catch(error => {
+                    console.log(error.message)
+                })
+        }
+    }
     return (
         <div className="flex flex-col items-center min-h-screen lg:mt-[-30px] justify-center mx-auto">
             <div className="max-w-xl border-2 border-dark p-5 rounded-lg">
@@ -42,7 +60,7 @@ const Login = () => {
                         <label htmlFor="email">
                             Email
                         </label>
-                        <input type="email" placeholder="abc@gmail.com" name="email" className="input w-full" required />
+                        <input type="email" ref={emailRef} placeholder="abc@gmail.com" name="email" className="input w-full" required />
                     </div>
                     <div className="mt-5 relative">
                         <label htmlFor="profile">
@@ -55,6 +73,7 @@ const Login = () => {
                             }
                         </p>
                     </div>
+                    <p className="text-xs underline cursor-pointer" onClick={handleResetPassword}>Forget Password?</p>
                     <button type="submit" className="btn btn-dark w-full mt-5 btn-neutral">
                         Login
                     </button>
