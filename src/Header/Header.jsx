@@ -64,7 +64,7 @@ const Header = () => {
                                 </div>
                             </div>
                             <ul tabIndex={0} className="menu menu-sm dropdown-content bg-base-100 rounded-box z-10 mt-3 w-52 p-2 shadow">
-                                <li><a>Profile</a></li>
+                                <li><Link to="/profile">Profile</Link></li>
                                 <li><a>Settings</a></li>
                                 <li className="text-xs" onClick={handleLogOut}><a>Logout</a></li>
                             </ul>
