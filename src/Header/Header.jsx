@@ -1,16 +1,28 @@
 import { useEffect, useState } from "react";
-import { NavLink } from "react-router";
-import { onAuthStateChanged } from "firebase/auth";
+import { NavLink, useNavigate } from "react-router";
+import { onAuthStateChanged, signOut } from "firebase/auth";
 import { auth } from "../Firebase/Firebase.config"
 
 const Header = () => {
     const [user, setUser] = useState(null);
+    const navigate = useNavigate();
     useEffect(() => {
         onAuthStateChanged(auth, (currentUser) => {
             setUser(currentUser);
             console.log(user)
         });
     }, []);
+
+    // Handle Logout
+    const handleLogOut = () => {
+        signOut(auth)
+            .then(() => {
+                navigate('/login');
+            })
+            .catch((error => {
+                console.log(error.message)
+            }))
+    }
 
     return (
         <div>
@@ -57,7 +69,7 @@ const Header = () => {
                                         </a>
                                     </li>
                                     <li><a>Settings</a></li>
-                                    <li><a>Logout</a></li>
+                                    <li className="text-xs" onClick={handleLogOut}><a>Logout</a></li>
                                 </ul>
                             </div>
                             :
