@@ -23,7 +23,7 @@ const SignUp = () => {
                         </label>
                         <input type="text" placeholder="Upload Your Image Link" name="profile" className="input w-full" />
                     </div>
-                    <button className="btn btn-dark w-full mt-5 btn-neutral">
+                    <button type="submit" className="btn btn-dark w-full mt-5 btn-neutral">
                         Sign-up
                     </button>
                 </form>
