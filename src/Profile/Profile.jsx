@@ -25,6 +25,10 @@ const Profile = () => {
                         <div className="flex justify-center">
                             <img src={user.photoURL} alt="" className="w-28 h-28 rounded-full border-4" />
                         </div>
+                        <div>
+                            <h2 className="text-center text-xl font-semibold my-2">{user.displayName}</h2>
+                            <p className="text-center text-md">{user.email}</p>
+                        </div>
                     </div>
             }
         </div>
