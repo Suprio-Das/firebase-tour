@@ -6,6 +6,10 @@ import firebaseGit from "../images/firebaseGit.png";
 import firebaseEmailVerification from "../images/firebaseEmailVerification.png";
 import firebasePasswordReset from "../images/firebasePasswordReset.png";
 import html from "../images/html.png";
+import tailwind from "../images/tailwind.png";
+import daisyui from "../images/daisyui.svg";
+import react from "../images/react.png";
+import firebaseTech from "../images/firebase-tech.png";
 const Home = () => {
     return (
         <div className="w-[80%] mx-auto lg:my-11">
@@ -89,8 +93,22 @@ const Home = () => {
             {/* Technologies */}
             <section className="mt-24">
                 <h1 className="lg:text-3xl text-xl font-semibold text-center"> 💻 Technologies Used</h1>
-                <div>
-                    <img src={html} alt="" className="w-16" />
+                <div className="flex items-center justify-between">
+                    <div>
+                        <img src={html} alt="" className="w-16" />
+                    </div>
+                    <div>
+                        <img src={tailwind} alt="" className="w-36" />
+                    </div>
+                    <div>
+                        <img src={daisyui} alt="" className="w-36" />
+                    </div>
+                    <div>
+                        <img src={react} alt="" className="w-36" />
+                    </div>
+                    <div>
+                        <img src={firebaseTech} alt="" className="w-36" />
+                    </div>
                 </div>
             </section>
         </div>
