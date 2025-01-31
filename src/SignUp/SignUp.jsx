@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { IoPersonCircleSharp } from "react-icons/io5";
 const SignUp = () => {
-    const [errorMessage, setErrorMessage] = useState(false);
+    const [errorMessage, setErrorMessage] = useState('');
     const handleRegister = (e) => {
         e.preventDefault();
         const name = e.target.name.value;
@@ -11,14 +11,21 @@ const SignUp = () => {
         console.log(name, email, profile, password)
 
         // reseting state
-        setErrorMessage(false);
+        setErrorMessage('');
 
-        // Validating password
-        const passwordRegex = "/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[\W_]).+$/";
-        if (!password.test(passwordRegex)) {
-            setErrorMessage(true);
+        // validating password according to the length
+        if (password.length < 6) {
+            setErrorMessage('Password Must Be 6 Words Longer.')
             return;
         }
+
+        // Validating password using regex
+        const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[\W_]).+$/;
+        if (!passwordRegex.test(password)) {
+            setErrorMessage("Please give a strong password. E.g. helloBuddy123#!#");
+            return;
+        }
+        console.log(errorMessage)
     }
     return (
         <div className="flex flex-col items-center min-h-screen lg:mt-[-30px] justify-center mx-auto">
