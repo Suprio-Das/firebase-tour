@@ -50,7 +50,7 @@ const SignUp = () => {
     return (
         <div className="flex flex-col items-center min-h-screen lg:mt-[-30px] justify-center mx-auto">
             <div className="max-w-xl border-2 border-dark p-5 rounded-lg">
-                <h1 className="flex items-center text-xl font-semibold"><IoPersonCircleSharp className="text-3xl mr-2" /> Register Your Firebase Account!</h1>
+                <h1 className="flex items-center text-xl font-semibold text-center"><IoPersonCircleSharp className="text-3xl mr-2" /> Register Your Firebase Account!</h1>
                 <form onSubmit={handleRegister}>
                     <div className="mt-5">
                         <label htmlFor="name">
@@ -83,7 +83,8 @@ const SignUp = () => {
                 {
                     success &&
                     <div className="mt-3">
-                        <code className="text-center text-green-700 text-sm font-semibold">Account Created Successfully! Please Verfiy Your Email Before Login.</code>
+                        <code className="block text-center text-green-700 text-sm font-semibold">Account Created Successfully!</code>
+                        <code className="block text-center text-red-600"> Please Verfiy Your Email Before Login.</code>
                     </div>
                 }
             </div>
