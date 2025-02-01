@@ -43,7 +43,7 @@ const Settings = () => {
                             <label htmlFor="profile">
                                 Profile URL
                             </label>
-                            <input type="text" placeholder="Enter your profile url" name="profile" className="input w-full" />
+                            <input type="text" placeholder="Enter your profile url" name="profile" value={loggedInUser ? loggedInUser.photoURL : ""} className="input w-full" />
                         </div>
                         <button type="submit" className="btn btn-dark w-full mt-5 btn-neutral">
                             Update Profile
