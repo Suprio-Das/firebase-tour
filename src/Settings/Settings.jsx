@@ -4,10 +4,12 @@ import { auth } from "../Firebase/Firebase.config";
 
 const Settings = () => {
     const [loggedInUser, setLoggedInUser] = useState(null);
+    const [name, setName] = useState(loggedInUser?.displayName || "");
     useEffect(() => {
         onAuthStateChanged(auth, user => {
             if (user) {
                 setLoggedInUser(user);
+                setName(user.displayName)
             }
         })
 
@@ -23,7 +25,7 @@ const Settings = () => {
                             <label htmlFor="name">
                                 Name
                             </label>
-                            <input type="text" placeholder="E.g. Suprio Das" name="name" className="input w-full" />
+                            <input type="text" placeholder="E.g. Suprio Das" name="name" value={name} onChange={(e) => setName(e.target.value)} className="input w-full" />
                         </div>
                         <div className="mt-5">
                             <label htmlFor="email">
