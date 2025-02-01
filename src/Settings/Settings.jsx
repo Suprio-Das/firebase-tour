@@ -31,7 +31,7 @@ const Settings = () => {
                             <label htmlFor="email">
                                 Email
                             </label>
-                            <input type="email" placeholder="E.g. Suprio Das" name="email" value={loggedInUser.email} className="input w-full" disabled />
+                            <input type="email" placeholder="E.g. Suprio Das" name="email" value={loggedInUser ? loggedInUser.email : ""} className="input w-full" disabled />
                         </div>
                         <div className="mt-5">
                             <label htmlFor="email">
