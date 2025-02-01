@@ -1,8 +1,9 @@
-import { onAuthStateChanged } from "firebase/auth";
+import { onAuthStateChanged, updatePassword, updateProfile } from "firebase/auth";
 import { useEffect, useState } from "react";
 import { auth } from "../Firebase/Firebase.config";
 
 const Settings = () => {
+    const [success, setSuccess] = useState(false);
     const [loggedInUser, setLoggedInUser] = useState(null);
     const [name, setName] = useState(loggedInUser?.displayName || "");
     useEffect(() => {
@@ -15,12 +16,45 @@ const Settings = () => {
 
         console.log(loggedInUser)
     }, [])
+
+    const handleProfileUpdate = e => {
+        e.preventDefault();
+        const updatedName = name;
+        const updatedPassword = e.target.password.value;
+        const updatedProfile = e.target.profile.value;
+        console.log(updatedName, updatedPassword, updatedProfile)
+
+        setSuccess(false);
+
+        updateProfile(auth.currentUser, {
+            displayName: updatedName, photoURL: updatedProfile
+        })
+            .then(() => {
+                if (updatedPassword) {
+                    updatePassword(auth.currentUser, updatedPassword)
+                        .then(() => {
+                            setSuccess(true);
+                        })
+                        .catch(error => {
+                            console.log(error.message)
+                        })
+                }
+                else {
+                    setSuccess(true);
+                }
+            })
+            .catch(error => {
+                console.log(error.message)
+            })
+    }
+
+    console.log(loggedInUser)
     return (
         <div className="w-[80%] mx-auto my-11 min-h-screen">
             <div className="p-5 max-w-md flex flex-col justify-center items-center mx-auto border-2 rounded-lg">
                 <h1 className="text-center text-2xl font-semibold">🔥 Update Your Profile 🚀</h1>
                 <div className="w-full">
-                    <form action="">
+                    <form onSubmit={handleProfileUpdate}>
                         <div className="mt-5">
                             <label htmlFor="name">
                                 Name
